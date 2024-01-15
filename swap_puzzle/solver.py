@@ -1,5 +1,6 @@
 from grid import Grid
 
+
 class Solver(): 
     """
     A solver class, to be implemented.
@@ -12,5 +13,11 @@ class Solver():
         """
         # TODO: implement this function (and remove the line "raise NotImplementedError").
         # NOTE: you can add other methods and subclasses as much as necessary. The only thing imposed is the format of the solution returned.
-        raise NotImplementedError
+        swaps = []
+       
+            swaps = swaps.addend()
+        nb = len(swaps)
+        return (swaps)
+        print("Number of swaps = " + int(nb))
+       
 

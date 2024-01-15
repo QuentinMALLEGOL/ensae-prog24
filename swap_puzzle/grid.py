@@ -4,6 +4,7 @@ This is the grid module. It contains the Grid class and its associated methods.
 
 import random
 
+
 class Grid():
     """
     A class representing the grid from the swap puzzle. It supports rectangular grids. 
@@ -58,8 +59,16 @@ class Grid():
         Checks is the current state of the grid is sorte and returns the answer as a boolean.
         """
         # TODO: implement this function (and remove the line "raise NotImplementedError").
-        raise NotImplementedError
-
+        j = 1
+        for i in self:
+            if i == j: 
+                A = True
+                j = j+1
+            else: 
+                A = False
+                j = j+1
+        print(A)
+    
     def swap(self, cell1, cell2):
         """
         Implements the swap operation between two cells. Raises an exception if the swap is not allowed.
@@ -70,7 +79,16 @@ class Grid():
             The two cells to swap. They must be in the format (i, j) where i is the line and j the column number of the cell. 
         """
         # TODO: implement this function (and remove the line "raise NotImplementedError").
-        raise NotImplementedError
+        i1 = cell1[0]
+        j1 = cell1[1]
+        i2 = cell2[0]
+        j2 = cell2[1]
+        if (i1 == i2 and abs(j1-j2) == 1) or (j1 == j2 and abs(i1-i2) == 1):
+            temp = cell1
+            cell1 = cell2
+            cell2 = temp
+        else:
+            raise NotImplementedError("Swap not allowed")
 
     def swap_seq(self, cell_pair_list):
         """
@@ -83,7 +101,8 @@ class Grid():
             So the format should be [((i1, j1), (i2, j2)), ((i1', j1'), (i2', j2')), ...].
         """
         # TODO: implement this function (and remove the line "raise NotImplementedError").
-        raise NotImplementedError
+        for i in cell_pair_list:
+            self.swap(i[0], i[1])
 
     @classmethod
     def grid_from_file(cls, file_name): 
